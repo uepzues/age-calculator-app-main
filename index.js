@@ -42,60 +42,57 @@ $(document).ready(function () {
     const isValidDay =
       dayIn >= 1 && dayIn <= new Date(yearIn, monthIn, 0).getDate();
     const isValidMonth = monthIn >= 1 && monthIn <= 12;
-    const isValidYear = yearIn >= 1900 && yearIn <= date.getFullYear() + 1;
+    const isValidYear = yearIn >= 1900 && yearIn <= date.getFullYear();
 
-    if (dayIn == null) {
+    if (dayInValue === "") {
       $("#day").addClass("error");
-      $(".reqFieldDay").css("display", "initial");
+      $("#daysOut").text("--");
       $(".errorBotDay").css("display", "none");
+      $(".reqFieldDay").css("display", "initial");
+    } else if (!isValidDay || isNaN(dayInValue)) {
+      $("#day").addClass("error");
+      $("#daysOut").text("--");
+      $(".errorBotDay").css("display", "initial");
+      $(".reqFieldDay").css("display", "none");
     } else {
-      if (!isValidDay || dayIn == "nonNumeric") {
-        $("#day").addClass("error");
-        $("#daysOut").text("--");
-        $(".errorBotDay").css("display", "initial");
-        $(".reqFieldDay").css("display", "none");
-      } else {
-        $("#daysOut").text(daysOut.toString().padStart(2, "0"));
-        $(".reqFieldDay").css("display", "none");
-        $(".errorBotDay").css("display", "none");
-      }
+      $("#daysOut").text(daysOut.toString().padStart(2, "0"));
+      $(".reqFieldDay").css("display", "none");
+      $(".errorBotDay").css("display", "none");
     }
 
-    if (monthIn == null) {
+    //if an error with non number occurs on month or year it affects day
+    if (monthInValue === "") {
       $("#month").addClass("error");
-      $(".reqFieldMonth").css("display", "initial");
+      $("#monthOut").text("--");
       $(".errorBotMonth").css("display", "none");
+      $(".reqFieldMonth").css("display", "initial");
+    } else if (!isValidMonth || isNaN(monthInValue)) {
+      $("#month").addClass("error");
+      $("#monthOut").text("--");
+      $(".errorBotMonth").css("display", "initial");
+      $(".reqFieldMonth").css("display", "none");
     } else {
-      if (!isValidMonth || monthIn == "nonNumeric") {
-        $("#month").addClass("error");
-        $("#monthOut").text("--");
-        $(".errorBotMonth").css("display", "initial");
-        $(".reqFieldMonth").css("display", "none");
-      } else {
-        $("#monthOut").text(monthOut.toString().padStart(2, "0"));
-        $(".reqFieldMonth").css("display", "none");
-        $(".errorBotMonth").css("display", "none");
-
-      }
+      $("#monthOut").text(monthOut.toString().padStart(2, "0"));
+      $(".reqFieldMonth").css("display", "none");
+      $(".errorBotMonth").css("display", "none");
     }
 
-    if (yearIn == null) {
+    if (yearInValue === "") {
       $("#year").addClass("error");
-      $(".reqFieldYear").css("display", "initial");
+      $("#yearOut").text("--");
       $(".errorBotYear").css("display", "none");
-    } else if (yearIn < 1900) {
+      $(".reqFieldYear").css("display", "initial");
+    } else if (yearInValue < 1900) {
       alert("Must be at least 1900");
+    } else if (!isValidYear || isNaN(yearInValue)) {
+      $("#year").addClass("error");
+      $("#yearOut").text("--");
+      $(".errorBotYear").css("display", "initial");
+      $(".reqFieldYear").css("display", "none");
     } else {
-      if (!isValidYear || yearIn == "nonNumeric") {
-        $("#year").addClass("error");
-        $("#yearOut").text("--");
-        $(".errorBotYear").css("display", "initial");
-        $(".reqFieldYear").css("display", "none");
-      } else {
-        $("#yearOut").text(yearOut.toString().padStart(2, "0"));
-        $(".reqFieldYear").css("display", "none");
-        $(".errorBotYear").css("display", "none");
-      }
+      $("#yearOut").text(yearOut.toString().padStart(2, "0"));
+      $(".reqFieldYear").css("display", "none");
+      $(".errorBotYear").css("display", "none");
     }
 
     if (

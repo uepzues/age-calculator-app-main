@@ -93,6 +93,12 @@ label {
   font-size: 0.8rem;
 }
 
+/* .errorBotMonth2 {
+  display: none;
+  color: blue;
+  font-family: Poppins-Italic;
+  font-size: 0.8rem;
+} */
 .validDate {
   display: none;
   color: var(--Light-red);
