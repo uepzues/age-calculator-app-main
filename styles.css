@@ -1,0 +1,186 @@
+@font-face {
+  font-family: Poppins-Regular;
+  src: url(/assets/fonts/Poppins-Regular.ttf);
+}
+@font-face {
+  font-family: Poppins-Bold;
+  src: url(/assets/fonts/Poppins-Bold.ttf);
+}
+@font-face {
+  font-family: Poppins-Bold-Italic;
+  src: url(/assets/fonts/Poppins-BoldItalic.ttf);
+}
+@font-face {
+  font-family: Poppins-Extrabold;
+  src: url(/assets/fonts/Poppins-ExtraBold.ttf);
+}
+@font-face {
+  font-family: Poppins-ExtraBoldItalic;
+  src: url(/assets/fonts/Poppins-ExtraBoldItalic.ttf);
+}
+@font-face {
+  font-family: Poppins-Italic;
+  src: url(/assets/fonts/Poppins-Italic.ttf);
+}
+:root {
+  /* ## Colors */
+
+  /* ### Primary */
+
+  --Purple: hsl(259, 100%, 65%);
+  --Light-red: hsl(0, 100%, 67%);
+
+  /* ### Neutral */
+
+  --White: hsl(0, 0%, 100%);
+  --Off-white: hsl(0, 0%, 94%);
+  --Light-grey: hsl(0, 0%, 86%);
+  --Smokey-grey: hsl(0, 1%, 44%);
+  --Off-black: hsl(0, 0%, 8%);
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+  margin: 4rem;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+html {
+  font-size: 10px;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: var(--Off-white);
+}
+
+main {
+  width: 25rem;
+  background-color: var(--White);
+  font-family: Poppins-Extrabold;
+  /* border: 2px solid red; */
+  box-shadow: 1px 1px 3px 2px rgba(113, 111, 111, 0.2);
+  padding: 4rem;
+  border-radius: 20px 20px 100px;
+}
+
+.input {
+  display: flex;
+}
+
+label {
+  color: var(--Smokey-grey);
+}
+
+.error {
+  color: var(--Light-red);
+}
+
+.errorBotDay,
+.errorBotMonth,
+.errorBotYear {
+  display: none;
+  color: var(--Light-red);
+  font-family: Poppins-Italic;
+  font-size: 0.8rem;
+}
+
+.validDate {
+  display: none;
+  color: var(--Light-red);
+  font-family: Poppins-Italic;
+  font-size: 0.8rem;
+}
+
+.validYear {
+  display: none;
+  color: var(--Light-red);
+  font-family: Poppins-Italic;
+  font-size: 0.8rem;
+}
+.reqFieldDay,
+.reqFieldMonth,
+.reqFieldYear {
+  display: none;
+  color: var(--Light-red);
+  font-family: Poppins-Italic;
+  font-size: 0.8rem;
+}
+
+input {
+  width: 6rem;
+  height: 2rem;
+  margin: 0.5rem 1rem 1rem 0;
+  padding: 1.5rem 0.5rem 1.5rem 1rem;
+  border: none;
+  border: 1px solid var(--Light-grey);
+  border-radius: 7px;
+  font-family: Poppins-Bold;
+  font-size: 2rem;
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button {
+  appearance: none;
+}
+input[type="number"] {
+  appearance: textfield;
+}
+
+input:focus {
+  outline: none;
+  border: 1px solid var(--Purple);
+}
+
+input::placeholder {
+  font-family: Poppins-Bold;
+  font-size: 2rem;
+}
+
+.hr {
+  border-bottom: 1.5px solid var(--Light-grey);
+  margin: 4rem 0;
+}
+.hr button {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 5rem;
+  height: 5rem;
+  border: none;
+  border-radius: 25px;
+  background-color: var(--Purple);
+}
+.hr button:hover {
+  background-color: #000;
+}
+
+button:active {
+  scale: 0.9;
+}
+
+button img {
+  width: 3rem;
+  /* height: 100%; */
+  margin: auto;
+}
+
+p {
+  font-family: Poppins-ExtraBoldItalic;
+  font-size: 4rem;
+  line-height: 1;
+  margin: 0.5rem 0;
+}
+
+.output {
+  color: var(--Purple);
+}
