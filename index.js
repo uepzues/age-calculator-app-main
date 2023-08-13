@@ -46,7 +46,8 @@ $(document).ready(function () {
       $(".reqFieldDay").css("display", "none");
     } else {
       $("#daysOut").text(daysOut.toString().padStart(2, "0"));
-      $(".errorBotDay", ".reqFieldDay").css("display", "none");
+      $(".reqFieldDay").css("display", "none");
+      $(".errorBotDay").css("display", "none");
     }
     if (monthInValue === "") {
       $("#month").addClass("error");
@@ -60,7 +61,8 @@ $(document).ready(function () {
       $(".reqFieldMonth").css("display", "none");
     } else {
       $("#monthOut").text(monthOut.toString().padStart(2, "0"));
-      $(".errorBotMonth", ".reqFieldMonth").css("display", "none");
+      $(".errorBotMonth").css("display", "none");
+      $(".reqFieldMonth").css("display", "none");
     }
 
     if (yearInValue === "") {
@@ -77,7 +79,8 @@ $(document).ready(function () {
       $(".reqFieldYear").css("display", "none");
     } else {
       $("#yearOut").text(yearOut.toString().padStart(2, "0"));
-      $(".errorBotYear", ".reqFieldYear").css("display", "none");
+      $(".errorBotYear").css("display", "none");
+      $(".reqFieldYear").css("display", "none");
     }
 
     if (
