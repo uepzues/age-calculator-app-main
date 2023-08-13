@@ -88,7 +88,6 @@ $(document).ready(function () {
       isNaN(dateIn)
     ) {
       $("#daysOut, #monthOut, #yearOut").text("--");
-      $(".errorBotYear").css("display", "initial");
     }
   });
 });
