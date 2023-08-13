@@ -5,30 +5,20 @@ $(document).ready(function () {
     const yearInValue = $("#yearIn").val();
 
     const dayIn =
-      dayInValue === ""
-        ? null
-        : isNaN(dayInValue)
-        ? "nonNumeric"
-        : parseInt(dayInValue);
+      dayInValue === "" || isNaN(dayInValue) ? null : parseInt(dayInValue);
     const monthIn =
-      monthInValue === ""
+      monthInValue === "" || isNaN(monthInValue)
         ? null
-        : isNaN(monthInValue)
-        ? "nonNumeric"
         : parseInt(monthInValue);
     const yearIn =
-      yearInValue === ""
-        ? null
-        : isNaN(yearInValue)
-        ? "nonNumeric"
-        : parseInt(yearInValue);
+      yearInValue === "" || isNaN(yearInValue) ? null : parseInt(yearInValue);
 
     const date = new Date();
     const dateIn = new Date(yearIn, monthIn - 1, dayIn);
 
     const timeDiff = date - dateIn;
 
-    const yearOut = Math.floor(timeDiff / (365.25 * 24 * 60 * 60 * 1000));
+    const yearOut = Math.floor(timeDiff / (365.25 * 24 * 60 * 60 * 1000)); //
     const monthOut = Math.floor(
       (timeDiff % (365.25 * 24 * 60 * 60 * 1000)) /
         (30.44 * 24 * 60 * 60 * 1000)
@@ -40,7 +30,7 @@ $(document).ready(function () {
     $("#day, #month, #year").removeClass("error");
 
     const isValidDay =
-      dayIn >= 1 && dayIn <= new Date(yearIn, monthIn, 0).getDate();
+      dayIn >= 1 && dayIn <= parseInt(new Date(yearIn, monthIn, 0).getDate());
     const isValidMonth = monthIn >= 1 && monthIn <= 12;
     const isValidYear = yearIn >= 1900 && yearIn <= date.getFullYear();
 
@@ -49,32 +39,28 @@ $(document).ready(function () {
       $("#daysOut").text("--");
       $(".errorBotDay").css("display", "none");
       $(".reqFieldDay").css("display", "initial");
-    } else if (!isValidDay || isNaN(dayInValue)) {
+    } else if (!isValidDay) {
       $("#day").addClass("error");
       $("#daysOut").text("--");
       $(".errorBotDay").css("display", "initial");
       $(".reqFieldDay").css("display", "none");
     } else {
       $("#daysOut").text(daysOut.toString().padStart(2, "0"));
-      $(".reqFieldDay").css("display", "none");
-      $(".errorBotDay").css("display", "none");
+      $(".errorBotDay", ".reqFieldDay").css("display", "none");
     }
-
-    //if an error with non number occurs on month or year it affects day
     if (monthInValue === "") {
       $("#month").addClass("error");
       $("#monthOut").text("--");
       $(".errorBotMonth").css("display", "none");
       $(".reqFieldMonth").css("display", "initial");
-    } else if (!isValidMonth || isNaN(monthInValue)) {
+    } else if (!isValidMonth) {
       $("#month").addClass("error");
       $("#monthOut").text("--");
       $(".errorBotMonth").css("display", "initial");
       $(".reqFieldMonth").css("display", "none");
     } else {
       $("#monthOut").text(monthOut.toString().padStart(2, "0"));
-      $(".reqFieldMonth").css("display", "none");
-      $(".errorBotMonth").css("display", "none");
+      $(".errorBotMonth", ".reqFieldMonth").css("display", "none");
     }
 
     if (yearInValue === "") {
@@ -84,15 +70,14 @@ $(document).ready(function () {
       $(".reqFieldYear").css("display", "initial");
     } else if (yearInValue < 1900) {
       alert("Must be at least 1900");
-    } else if (!isValidYear || isNaN(yearInValue)) {
+    } else if (!isValidYear) {
       $("#year").addClass("error");
       $("#yearOut").text("--");
       $(".errorBotYear").css("display", "initial");
       $(".reqFieldYear").css("display", "none");
     } else {
       $("#yearOut").text(yearOut.toString().padStart(2, "0"));
-      $(".reqFieldYear").css("display", "none");
-      $(".errorBotYear").css("display", "none");
+      $(".errorBotYear", ".reqFieldYear").css("display", "none");
     }
 
     if (
@@ -103,6 +88,7 @@ $(document).ready(function () {
       isNaN(dateIn)
     ) {
       $("#daysOut, #monthOut, #yearOut").text("--");
+      $(".errorBotYear").css("display", "initial");
     }
   });
 });
